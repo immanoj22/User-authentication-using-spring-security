@@ -9,6 +9,26 @@ A small Spring Boot app where users sign up and log in, and get back a JWT that 
 - A filter reads the `Authorization: Bearer <token>` header, checks the token and sets the logged-in user for that request.
 - Everything except sign-up and login needs a valid login (token, form login or HTTP basic).
 
+## How it works
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant F as JWT filter
+    participant S as Controllers
+    participant DB as PostgreSQL
+    C->>S: POST /signup (user details)
+    S->>DB: save user with BCrypt hash
+    C->>S: POST / (username, password)
+    S->>DB: load user, check password
+    S-->>C: signed JWT
+    C->>F: GET /users with Bearer token
+    F->>F: validate token, set logged-in user
+    F->>S: pass request on
+    S->>DB: query
+    S-->>C: response
+```
+
 ## Tech stack
 
 Java 17, Spring Boot 3.4.1, Spring Security, Spring Data JPA, PostgreSQL, JJWT 0.12.5, Maven.
