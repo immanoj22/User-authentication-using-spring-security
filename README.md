@@ -63,3 +63,5 @@ It runs on the default port 8080.
 ## Notes
 
 This is a learning project. The JWT signing key is generated randomly each time the app starts, so tokens stop working after a restart. Tokens expire after about 108 seconds because of how the expiry is calculated, which I would change to a configurable value. Next I would add duplicate checks on signup and stop `/users` from returning password hashes. There are no real tests, only the default context test.
+
+Set `DB_PASSWORD` in your environment for the database password.
