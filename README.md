@@ -1,5 +1,7 @@
 # User Authentication using Spring Security
 
+[![build](https://github.com/immanoj22/User-authentication-using-spring-security/actions/workflows/build.yml/badge.svg)](https://github.com/immanoj22/User-authentication-using-spring-security/actions/workflows/build.yml)
+
 A small Spring Boot app where users sign up and log in, and get back a JWT that they send on later requests. I built it to learn how Spring Security works with a custom JWT filter and a database-backed user store.
 
 ## What it does
